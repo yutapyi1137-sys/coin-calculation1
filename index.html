@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>還元コイン計算機</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 12px;
+    font-family: sans-serif;
+    background: #fff;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 8px 0 16px;
+  }
+
+  img {
+    max-width: 180px;
+    margin-bottom: 8px;
+  }
+
+  .line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  input {
+    width: 80px;
+    font-size: 14px;
+    padding: 3px;
+    text-align: center;
+  }
+
+  .result {
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+  .result span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .credit {
+    margin-top: 16px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- 任意：画像 -->
+  <img src="logo.png" alt="">
+
+  <h1>還元コイン計算機</h1>
+
+  <div class="line">
+    無償コイン
+    <input
+      type="number"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      id="free"
+      oninput="calc()"
+    >
+  </div>
+
+  <div class="line">
+    有償コイン
+    <input
+      type="number"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      id="paid"
+      oninput="calc()"
+    >
+  </div>
+
+  <div class="result">
+    〖還元コイン〗<br>
+    <span id="result">0</span>コイン
+  </div>
+
+  <div class="credit">
+    
+  </div>
+
+<script>
+function calc() {
+  const free = Number(document.getElementById("free").value) || 0;
+  const paid = Number(document.getElementById("paid").value) || 0;
+
+  const total = (free * 0.3) + (paid * 0.9);
+  document.getElementById("result").textContent = Math.floor(total);
+}
+</script>
+
+</body>
+</html>
